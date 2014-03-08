@@ -37,7 +37,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
+    'south',    
     'django_mptt_admin',
     'django_read',
 )
@@ -92,3 +93,7 @@ MEDIA_ROOT = os.path.join(HTDOCS_DIR, 'media')
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates', )
 )
+
+#DJANGO_READ_PRIVATE = True
+#DJANGO_READ_MEDIA_URL = "/protected"
+#DJANGO_READ_MEDIA_ROOT = "/tmp/"

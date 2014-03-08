@@ -57,7 +57,7 @@
 "use strict";
 $(function() {
 	EPUBJS.filePath = "{{ STATIC_URL }}django_read/js/epub/libs/";
-    var Book = ePub("{{ MEDIA_URL }}{{ document.resource }}");
+    var Book = ePub("{{ resource_url }}");
     Book.renderTo("area");
 
     $('#next-page').click(function() {
