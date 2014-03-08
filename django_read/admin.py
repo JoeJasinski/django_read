@@ -1,11 +1,13 @@
 from django.contrib import admin
 from django import forms
+from django.shortcuts import render
+from django.conf.urls import patterns, url
 from django_mptt_admin.admin import DjangoMpttAdmin
 from django_read.models import Document
 from django.utils.translation import ugettext as _
 from django.template.defaultfilters import filesizeformat
 from django_read import DJANGO_READ_UPLOAD_CONTENT_TYPES, DJANGO_READ_UPLOAD_FILE_MAX_SIZE
-
+from django_read.views import DocumentDetailView
 
 class DocumentForm(forms.ModelForm):
 
@@ -47,5 +49,15 @@ class DocumentAdmin(DjangoMpttAdmin):
     def save_model(self, request, obj, form, change):
         obj.content_type = form.cleaned_data.get('content_type', '')
         obj.save()
+
+    def get_urls(self):
+        urls = super(DocumentAdmin, self).get_urls()
+        custom_urls = patterns('',
+            (r'^view/(?P<pk>\d+)/$', DocumentDetailView.as_view())
+        )
+        return custom_urls + urls
+
+
+
 
 admin.site.register(Document, DocumentAdmin)

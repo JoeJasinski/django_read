@@ -43,11 +43,10 @@
 {% endblock %}
 
 {% block content %}
-<div id="title">{{ document }}</div>
+<div id="title">{{ document.title }}: <span id="pub_title"></span></div>
 <div id="next-page"><a href="">next</a></div>
 <div id="prev-page"><a href="">prev</a></div>
 <div id="area"></div>
-
 {% endblock %}
 
 
@@ -69,6 +68,10 @@ $(function() {
     $('#prev-page').click(function() {
     	Book.prevPage();
     	return false;
+    });
+
+	Book.getMetadata().then(function(meta){
+	    $("#pub_title").html(meta.bookTitle+" – "+meta.creator);
     });
 
 });
