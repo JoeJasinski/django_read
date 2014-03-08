@@ -1,3 +1,6 @@
+IN PROGRESS
+
+
 This Django module is designed to be a simple mechanism to host private ebooks online.
 Currently, staff users can upload Documents via Django admin. 
 
